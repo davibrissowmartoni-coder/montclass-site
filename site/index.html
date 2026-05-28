@@ -917,8 +917,9 @@
     }
     .size-btn:hover { border-color: #666; color: #fff; }
     .size-btn.active { background: #fff; border-color: #fff; color: #000; }
-    .wrist-rec { opacity: 0; height: 0; overflow: hidden; transform: translateY(10px); transition: opacity 0.4s ease, transform 0.4s ease; pointer-events: none; }
-    .wrist-rec.show { opacity: 1; height: auto; overflow: visible; transform: none; pointer-events: auto; }
+    .wrist-rec { display: none; }
+    .wrist-rec.show { display: block; animation: wristFade 0.35s ease forwards; }
+    @keyframes wristFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
     .rec-box {
       background: #141414; border: 1px solid #2a2a2a; border-radius: 16px;
       padding: 20px 36px; margin-bottom: 12px;
