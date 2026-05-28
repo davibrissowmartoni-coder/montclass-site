@@ -336,6 +336,7 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
     }
+    .g-track { display: contents; }
     .g-item { display: flex; align-items: flex-start; gap: 14px; }
     .g-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
     .g-item h4 { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
@@ -739,7 +740,10 @@
       .banner-slide .banner-img-mobile  { display: block; }
       .collections { padding: 64px 24px; }
       .pgrid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-      .guarantee { grid-template-columns: 1fr 1fr; padding: 32px 24px; }
+      .guarantee { display: block; overflow: hidden; padding: 28px 0; }
+      .g-track { display: flex; animation: scrollG 18s linear infinite; }
+      .g-item { min-width: 260px; flex-shrink: 0; padding: 0 28px; align-items: flex-start; }
+      @keyframes scrollG { from { transform: translateX(0); } to { transform: translateX(-50%); } }
       .about { padding: 64px 24px; }
       .about-inner { grid-template-columns: 1fr; gap: 40px; }
       .faq { padding: 64px 24px; }
@@ -757,7 +761,7 @@
       .hero-title { font-size: 42px; }
       .hero-actions { flex-direction: column; align-items: stretch; }
       .hero-actions a { justify-content: center; }
-      .guarantee { grid-template-columns: 1fr; }
+      .guarantee { display: block; }
       .insta-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
@@ -1078,32 +1082,34 @@
 
 <!-- Guarantee strip -->
 <div class="guarantee">
-  <div class="g-item">
-    <div class="g-icon">🛡</div>
-    <div>
-      <h4>Garantia 1 Ano</h4>
-      <p>Relógios com maquinário automático possuem garantia de 1 ano.</p>
+  <div class="g-track" id="gTrack">
+    <div class="g-item">
+      <div class="g-icon">🛡</div>
+      <div>
+        <h4>Garantia 1 Ano</h4>
+        <p>Relógios com maquinário automático possuem garantia de 1 ano.</p>
+      </div>
     </div>
-  </div>
-  <div class="g-item">
-    <div class="g-icon">📦</div>
-    <div>
-      <h4>Entrega Rápida</h4>
-      <p>Prazo de 1 a 10 dias úteis. Frete grátis em todo o Brasil.</p>
+    <div class="g-item">
+      <div class="g-icon">📦</div>
+      <div>
+        <h4>Entrega Rápida</h4>
+        <p>Prazo de 1 a 10 dias úteis. Frete grátis em todo o Brasil.</p>
+      </div>
     </div>
-  </div>
-  <div class="g-item">
-    <div class="g-icon">💳</div>
-    <div>
-      <h4>Pagamento Seguro</h4>
-      <p>Mercado Pago, PIX e cartão. Plataforma 100% segura.</p>
+    <div class="g-item">
+      <div class="g-icon">💳</div>
+      <div>
+        <h4>Pagamento Seguro</h4>
+        <p>Mercado Pago, PIX e cartão. Plataforma 100% segura.</p>
+      </div>
     </div>
-  </div>
-  <div class="g-item">
-    <div class="g-icon">💬</div>
-    <div>
-      <h4>Atendimento Humano</h4>
-      <p>Seg–Sáb, 8h–19h. WhatsApp: (21) 96596-6145</p>
+    <div class="g-item">
+      <div class="g-icon">💬</div>
+      <div>
+        <h4>Atendimento Humano</h4>
+        <p>Seg–Sáb, 8h–19h. WhatsApp: (21) 96596-6145</p>
+      </div>
     </div>
   </div>
 </div>
@@ -1460,6 +1466,19 @@
     bannerTimer = setInterval(() => bannerMove(1), 4000);
   }
   bannerTimer = setInterval(() => bannerMove(1), 4000);
+
+  /* ── Guarantee scroll (mobile) — duplica itens para loop infinito ── */
+  if (window.innerWidth <= 768) {
+    var gTrack = document.getElementById('gTrack');
+    if (gTrack) {
+      var items = gTrack.querySelectorAll('.g-item');
+      items.forEach(function(item) {
+        var clone = item.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        gTrack.appendChild(clone);
+      });
+    }
+  }
 
   /* ── Banner swipe (touch) ── */
   const bannerEl = bannerTrack.parentElement;
