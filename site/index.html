@@ -118,6 +118,7 @@
       overflow: hidden;
       background: #111;
       line-height: 0;
+      touch-action: pan-y;
     }
     .banner-track {
       display: flex;
@@ -1486,19 +1487,9 @@
 
   /* ── Banner swipe (touch) ── */
   const bannerEl = bannerTrack.parentElement;
-  let swipeStartX = 0, swipeStartY = 0, swipeMoved = false;
-  bannerEl.addEventListener('touchstart', e => {
-    swipeStartX = e.touches[0].clientX;
-    swipeStartY = e.touches[0].clientY;
-    swipeMoved = false;
-  }, { passive: true });
-  bannerEl.addEventListener('touchmove', e => {
-    const dx = Math.abs(e.touches[0].clientX - swipeStartX);
-    const dy = Math.abs(e.touches[0].clientY - swipeStartY);
-    if (dx > dy && dx > 8) { swipeMoved = true; e.preventDefault(); }
-  }, { passive: false });
+  let swipeStartX = 0;
+  bannerEl.addEventListener('touchstart', e => { swipeStartX = e.touches[0].clientX; }, { passive: true });
   bannerEl.addEventListener('touchend', e => {
-    if (!swipeMoved) return;
     const diff = swipeStartX - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 30) bannerMove(diff > 0 ? 1 : -1);
   }, { passive: true });
