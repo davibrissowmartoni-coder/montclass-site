@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mont Class — Produto</title>
+  <meta name="description" content="Mont Class — Réplicas premium de relógios de luxo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg2: #f5f5f5;
+      --bg3: #eeeeee;
+      --border: #e0e0e0;
+      --text: #111111;
+      --text2: #444444;
+      --text3: #888888;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Header ── */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      height: 64px;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid #e0e0e0;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .header-logo img { height: 56px; width: auto; filter: brightness(0); }
+    .header-nav { display: flex; gap: 28px; list-style: none; }
+    .header-nav a {
+      color: var(--text3);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .header-nav a:hover { color: var(--text); }
+    .btn-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #111;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      text-decoration: none;
+    }
+    .btn-header:hover { opacity: 0.85; }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb {
+      padding: 18px 48px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text3);
+    }
+    .breadcrumb a { color: var(--text3); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--text); }
+    .breadcrumb span { color: var(--text); }
+
+    /* ── Product layout ── */
+    .product-page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 56px 48px 96px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    /* ── Gallery ── */
+    .gallery { position: sticky; top: 82px; }
+    .gallery-main {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      margin-bottom: 10px;
+    }
+    .gallery-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: opacity 0.25s;
+    }
+    .gallery-thumbs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .gallery-thumb {
+      width: 72px;
+      height: 72px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--bg2);
+      transition: border-color 0.2s;
+      flex-shrink: 0;
+    }
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .gallery-thumb.active { border-color: #111; }
+    .gallery-thumb:hover { border-color: #aaa; }
+
+    /* ── Product info ── */
+    .product-info {}
+    .product-brand {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-bottom: 12px;
+    }
+    .product-title {
+      font-size: clamp(22px, 2.5vw, 34px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .product-pricing {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .product-price { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; }
+    .product-orig { font-size: 14px; color: var(--text3); text-decoration: line-through; }
+    .product-disc {
+      background: #111;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      padding: 4px 8px;
+    }
+
+    .btn-wpp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: #25D366;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 18px 24px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      text-decoration: none;
+      margin-bottom: 12px;
+    }
+    .btn-wpp:hover { opacity: 0.9; }
+    .btn-wpp svg { width: 20px; height: 20px; fill: #fff; flex-shrink: 0; }
+
+    .btn-back {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      background: transparent;
+      color: var(--text3);
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 14px 24px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      margin-bottom: 36px;
+    }
+    .btn-back:hover { border-color: #aaa; color: var(--text); }
+
+    /* ── Description ── */
+    .product-desc-label {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-bottom: 16px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+    .product-desc {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.9;
+    }
+    .product-desc p { margin-bottom: 10px; }
+    .product-desc strong { color: var(--text); font-weight: 700; }
+    .product-desc h3 {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin: 24px 0 10px;
+      padding-left: 10px;
+      border-left: 2px solid #111;
+    }
+    .product-desc ul { list-style: none; padding: 0; margin-bottom: 10px; }
+    .product-desc li {
+      margin-bottom: 7px;
+      padding-left: 16px;
+      position: relative;
+    }
+    .product-desc li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--text3);
+      font-size: 11px;
+    }
+
+    /* ── Guarantees ── */
+    .product-guarantees {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .pg-item {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .pg-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .pg-item h5 { font-size: 11px; font-weight: 700; margin-bottom: 2px; }
+    .pg-item p { font-size: 10px; color: var(--text3); line-height: 1.5; }
+
+    /* ── Footer ── */
+    .footer { border-top: 1px solid var(--border); padding: 64px 48px 40px; }
+    .footer-top {
+      max-width: 1200px;
+      margin: 0 auto 48px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+    }
+    .footer-brand img { height: 28px; margin-bottom: 14px; filter: brightness(0); }
+    .footer-brand p { font-size: 12px; color: var(--text3); line-height: 1.75; max-width: 240px; }
+    .footer-col h5 {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text2);
+      margin-bottom: 14px;
+    }
+    .footer-col a { display: block; color: var(--text3); font-size: 12px; margin-bottom: 10px; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--text); }
+    .footer-col p { color: var(--text3); font-size: 12px; margin-bottom: 8px; line-height: 1.5; }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-bottom p { font-size: 11px; color: var(--text3); }
+    .pay-row { display: flex; gap: 5px; flex-wrap: wrap; }
+    .pay-chip {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 4px 9px;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--text3);
+    }
+
+    /* ── Not found ── */
+    .not-found {
+      max-width: 480px;
+      margin: 96px auto;
+      text-align: center;
+      padding: 0 24px;
+    }
+    .not-found h2 { font-size: 24px; font-weight: 800; margin-bottom: 12px; }
+    .not-found p { font-size: 14px; color: var(--text3); margin-bottom: 28px; }
+
+    /* ── WhatsApp float ── */
+    .wpp-float {
+      position: fixed;
+      bottom: 26px;
+      right: 26px;
+      z-index: 999;
+      width: 52px;
+      height: 52px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 22px rgba(37,211,102,0.35);
+      transition: transform 0.2s;
+    }
+    .wpp-float:hover { transform: scale(1.09); }
+    .wpp-float svg { width: 25px; height: 25px; fill: white; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .product-page { grid-template-columns: 1fr; gap: 40px; padding: 40px 24px 72px; }
+      .gallery { position: static; }
+    }
+    @media (max-width: 768px) {
+      .header { padding: 0 20px; justify-content: center; }
+      .header-nav { display: none; }
+      .btn-header { display: none; }
+      .header-logo { margin-left: 24px; }
+      .header-logo img { height: 44px; }
+      .breadcrumb { padding: 14px 20px; }
+      .footer { padding: 48px 24px 32px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 480px) {
+      .gallery-thumb { width: 60px; height: 60px; }
+      .product-title { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <a href="index.html" class="header-logo">
+    <img src="../marca/logo-cropped.png" alt="Mont Class">
+  </a>
+  <nav>
+    <ul class="header-nav">
+      <li><a href="index.html#colecoes" data-brand="rolex">Rolex</a></li>
+      <li><a href="index.html#colecoes" data-brand="patek">Patek Philippe</a></li>
+      <li><a href="index.html#colecoes" data-brand="tag">TAG Heuer</a></li>
+      <li><a href="index.html#colecoes" data-brand="omega">Omega</a></li>
+      <li><a href="index.html#sobre">Sobre</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+    </ul>
+  </nav>
+  <a href="https://wa.me/5521965966145" target="_blank" rel="noopener" class="btn-header">
+    Comprar via WhatsApp
+  </a>
+</header>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb" id="breadcrumb">
+  <a href="index.html">Início</a>
+  <span>›</span>
+  <a href="index.html#colecoes" id="bc-brand">Coleções</a>
+  <span>›</span>
+  <span id="bc-title">Produto</span>
+</div>
+
+<!-- Product content -->
+<div id="product-content"></div>
+
+<!-- Not found (hidden by default) -->
+<div class="not-found" id="not-found" style="display:none">
+  <h2>Produto não encontrado</h2>
+  <p>O produto que você está buscando não existe ou foi removido.</p>
+  <a href="index.html" class="btn-wpp" style="display:inline-flex; width:auto; padding:16px 32px;">
+    Ver todos os produtos
+  </a>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="../marca/logo-cropped.png" alt="Mont Class">
+      <p>Réplicas premium de relógios de luxo. Qualidade 1:1, frete grátis e 1 ano de garantia. Entregamos em todo o Brasil.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Coleções</h5>
+      <a href="index.html#colecoes">Rolex</a>
+      <a href="index.html#colecoes">Patek Philippe</a>
+      <a href="index.html#colecoes">TAG Heuer</a>
+      <a href="index.html#colecoes">Omega</a>
+    </div>
+    <div class="footer-col">
+      <h5>Informações</h5>
+      <a href="index.html#sobre">Sobre a Mont Class</a>
+      <a href="index.html#faq">Perguntas Frequentes</a>
+      <a href="https://montclassco.com/policies/refund-policy" target="_blank">Política de Troca</a>
+      <a href="https://montclassco.com/policies/shipping-policy" target="_blank">Política de Envio</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contato</h5>
+      <p>📱 (21) 96596-6145</p>
+      <p>✉️ suporte@montclass.com</p>
+      <p>Seg–Sáb: 8h às 19h</p>
+      <a href="https://instagram.com/mont_class" target="_blank" style="margin-top:8px">Instagram</a>
+      <a href="https://wa.me/5521965966145" target="_blank">WhatsApp</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Mont Class. Todos os direitos reservados.</p>
+    <div class="pay-row">
+      <span class="pay-chip">PIX</span>
+      <span class="pay-chip">VISA</span>
+      <span class="pay-chip">MASTER</span>
+      <span class="pay-chip">ELO</span>
+      <span class="pay-chip">AMEX</span>
+      <span class="pay-chip">DINERS</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp float -->
+<a href="https://wa.me/5521965966145" target="_blank" rel="noopener" class="wpp-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script src="produtos-data.js"></script>
+<script>
+  const WPP = '5521965966145';
+  const BRAND_NAMES = { rolex: 'Rolex', patek: 'Patek Philippe', tag: 'TAG Heuer', omega: 'Omega' };
+
+  const params = new URLSearchParams(window.location.search);
+  const handle = params.get('p');
+  const product = handle && ALL_PRODUCTS[handle];
+
+  if (!product) {
+    document.getElementById('not-found').style.display = 'block';
+  } else {
+    // Update page title
+    document.title = product.title + ' — Mont Class';
+
+    // Update breadcrumb
+    const bcBrand = document.getElementById('bc-brand');
+    bcBrand.textContent = BRAND_NAMES[product.brand] || 'Coleções';
+    bcBrand.href = 'index.html#colecoes';
+    document.getElementById('bc-title').textContent = product.title;
+
+    // Build product HTML
+    const msg = encodeURIComponent('Olá! Tenho interesse no ' + product.title + ' (' + product.price + '). Pode me dar mais informações?');
+
+    const thumbsHtml = product.images.map((img, i) =>
+      `<div class="gallery-thumb${i === 0 ? ' active' : ''}" onclick="switchImg(${i})" data-idx="${i}">
+        <img src="${img}" alt="${product.title}" loading="lazy">
+      </div>`
+    ).join('');
+
+    const pricingHtml = `
+      <span class="product-price">${product.price}</span>
+      ${product.orig ? `<span class="product-orig">${product.orig}</span>` : ''}
+      ${product.disc ? `<span class="product-disc">${product.disc}</span>` : ''}
+    `;
+
+    const guaranteesHtml = `
+      <div class="product-guarantees">
+        <div class="pg-item"><div class="pg-icon">🛡</div><div><h5>1 Ano de Garantia</h5><p>Garantia de maquinário em todos os modelos.</p></div></div>
+        <div class="pg-item"><div class="pg-icon">📦</div><div><h5>Frete Grátis</h5><p>Entrega em todo o Brasil sem custo.</p></div></div>
+        <div class="pg-item"><div class="pg-icon">💳</div><div><h5>PIX e Cartão</h5><p>Parcele no cartão ou pague via PIX.</p></div></div>
+        <div class="pg-item"><div class="pg-icon">🚚</div><div><h5>2–7 Dias Úteis</h5><p>Rastreamento enviado no WhatsApp.</p></div></div>
+      </div>
+    `;
+
+    document.getElementById('product-content').innerHTML = `
+      <div class="product-page">
+        <div class="gallery">
+          <div class="gallery-main">
+            <img src="${product.images[0]}" alt="${product.title}" id="main-img">
+          </div>
+          <div class="gallery-thumbs">${thumbsHtml}</div>
+        </div>
+        <div class="product-info">
+          <p class="product-brand">${BRAND_NAMES[product.brand] || ''}</p>
+          <h1 class="product-title">${product.title}</h1>
+          <div class="product-pricing">${pricingHtml}</div>
+          <a href="https://wa.me/${WPP}?text=${msg}" target="_blank" rel="noopener" class="btn-wpp">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Comprar via WhatsApp
+          </a>
+          <a href="index.html#colecoes" class="btn-back">← Voltar ao catálogo</a>
+          <p class="product-desc-label">Sobre este relógio</p>
+          <div class="product-desc">${product.desc}</div>
+          ${guaranteesHtml}
+        </div>
+      </div>
+    `;
+  }
+
+  function switchImg(idx) {
+    const mainImg = document.getElementById('main-img');
+    const thumbs = document.querySelectorAll('.gallery-thumb');
+    if (!mainImg || !product) return;
+    mainImg.style.opacity = '0';
+    setTimeout(() => {
+      mainImg.src = product.images[idx];
+      mainImg.style.opacity = '1';
+    }, 150);
+    thumbs.forEach((t, i) => t.classList.toggle('active', i === idx));
+  }
+</script>
+</body>
+</html>

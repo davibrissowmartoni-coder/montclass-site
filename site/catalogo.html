@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coleção — Mont Class</title>
+  <meta name="description" content="Catálogo completo de relógios Mont Class — Rolex, Patek Philippe, TAG Heuer e Omega.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg2: #f5f5f5;
+      --bg3: #eeeeee;
+      --border: #e0e0e0;
+      --text: #111111;
+      --text2: #444444;
+      --text3: #888888;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Promo bar ── */
+    .promo-bar {
+      background: #000; color: #fff; height: 34px;
+      overflow: hidden; display: flex; align-items: center;
+    }
+    .promo-track {
+      display: flex; white-space: nowrap;
+      animation: scroll-promo 40s linear infinite;
+    }
+    .promo-track span {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.18em;
+      text-transform: uppercase; padding: 0 36px;
+    }
+    .promo-track span::before { content: '✦'; margin-right: 14px; }
+    @keyframes scroll-promo {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── Header ── */
+    .header {
+      position: sticky; top: 0; z-index: 200; height: 64px;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid #e0e0e0;
+      padding: 0 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .header-logo {
+      position: absolute; left: 50%; transform: translateX(-42%);
+      display: flex; align-items: center;
+    }
+    .header-logo img { height: 40px; width: auto; filter: brightness(0); }
+    .header-back {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--text3);
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .header-back:hover { color: var(--text); }
+
+    /* ── Hero da coleção ── */
+    .col-hero {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 64px 48px 52px;
+    }
+    .col-hero-inner { max-width: 1200px; margin: 0 auto; }
+    .eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--text3); margin-bottom: 10px;
+    }
+    .col-hero h1 {
+      font-size: clamp(32px, 5vw, 64px);
+      font-weight: 800; letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+    .col-hero p { font-size: 14px; color: var(--text3); }
+
+    /* ── Brand tabs ── */
+    .brand-tabs {
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      display: flex; gap: 0;
+      overflow-x: auto; scrollbar-width: none;
+    }
+    .brand-tabs::-webkit-scrollbar { display: none; }
+    .brand-tab {
+      background: none; border: none; cursor: pointer;
+      font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3);
+      padding: 18px 24px; border-bottom: 2px solid transparent; margin-bottom: -1px;
+      white-space: nowrap; transition: color 0.2s, border-color 0.2s;
+    }
+    .brand-tab.active { color: var(--text); border-color: var(--text); }
+    .brand-tab:hover { color: var(--text); }
+
+    /* ── Grid ── */
+    .catalog-section { padding: 64px 48px 96px; }
+    .catalog-inner { max-width: 1200px; margin: 0 auto; }
+    .cat-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 36px; flex-wrap: wrap; gap: 12px;
+    }
+    .cat-count { font-size: 12px; color: var(--text3); font-weight: 500; }
+    .pgrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .pcard {
+      display: block; background: var(--bg);
+      border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: inherit; text-decoration: none;
+    }
+    .pcard:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.10); }
+    .pcard-img {
+      aspect-ratio: 1 / 1; overflow: hidden;
+      background: var(--bg2); position: relative;
+    }
+    .pcard-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.55s ease;
+    }
+    .pcard:hover .pcard-img img { transform: scale(1.07); }
+    .pcard-badge {
+      position: absolute; top: 12px; right: 12px;
+      background: #111; color: #fff; font-size: 9px; font-weight: 900;
+      letter-spacing: 0.08em; padding: 5px 10px; border-radius: 50px;
+    }
+    .pcard-body { padding: 18px 18px 20px; }
+    .pcard-name { font-size: 12px; font-weight: 600; line-height: 1.4; margin-bottom: 10px; }
+    .pcard-pricing { display: flex; align-items: baseline; gap: 9px; margin-bottom: 14px; flex-wrap: nowrap; }
+    .pcard-price { font-size: 16px; font-weight: 700; white-space: nowrap; }
+    .pcard-original { font-size: 11px; color: var(--text3); text-decoration: line-through; }
+    .pcard-btn {
+      display: block; width: 100%; text-align: center;
+      background: transparent; border: 1px solid var(--border); color: var(--text3);
+      pointer-events: none; font-family: 'Inter', sans-serif;
+      font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 11px 12px; border-radius: 50px; transition: all 0.2s;
+    }
+    .pcard:hover .pcard-btn { background: #111; color: #fff; border-color: #111; }
+
+    /* Empty state */
+    .empty-state {
+      grid-column: 1/-1; text-align: center;
+      padding: 80px 20px; color: var(--text3);
+    }
+    .empty-state p { font-size: 14px; }
+
+    /* ── Rolex video ── */
+    .rolex-video-section {
+      display: none;
+      border-bottom: 1px solid var(--border);
+    }
+    .rolex-video-section.visible { display: block; }
+    .rolex-video-wrap {
+      position: relative; width: 100%; aspect-ratio: 16 / 9;
+      background: #000; overflow: hidden;
+    }
+    .rolex-video-wrap video {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    /* ── Footer ── */
+    .footer { border-top: 1px solid var(--border); padding: 40px 48px; text-align: center; }
+    .footer p { font-size: 11px; color: var(--text3); }
+
+    /* ── WhatsApp float ── */
+    .wpp-float {
+      position: fixed; bottom: 26px; right: 26px; z-index: 999;
+      width: 52px; height: 52px; background: #25D366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 22px rgba(37,211,102,0.35); transition: transform 0.2s;
+    }
+    .wpp-float:hover { transform: scale(1.09); }
+    .wpp-float svg { width: 25px; height: 25px; fill: white; }
+
+    @media (max-width: 768px) {
+      .header { padding: 0 20px; }
+      .header-logo img { height: 44px; }
+      .col-hero { padding: 48px 24px 40px; }
+      .brand-tabs { padding: 0 16px; }
+      .catalog-section { padding: 40px 24px 72px; }
+      .pgrid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    }
+    @media (max-width: 480px) {
+      .pgrid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Promo bar -->
+<div class="promo-bar" aria-hidden="true">
+  <div class="promo-track">
+    <span>30% OFF em toda a loja</span>
+    <span>1 ano de garantia de maquinário</span>
+    <span>PIX e cartão de crédito</span>
+    <span>Qualidade 1:1 — máxima fidelidade visual</span>
+    <span>+799 relógios entregues</span>
+    <span>Atendimento via WhatsApp</span>
+    <span>30% OFF em toda a loja</span>
+    <span>1 ano de garantia de maquinário</span>
+    <span>PIX e cartão de crédito</span>
+    <span>Qualidade 1:1 — máxima fidelidade visual</span>
+    <span>+799 relógios entregues</span>
+    <span>Atendimento via WhatsApp</span>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="header">
+  <a href="index.html" class="header-back">← Voltar</a>
+  <a href="index.html" class="header-logo">
+    <img src="../marca/logo-cropped.png" alt="Mont Class">
+  </a>
+  <div></div>
+</header>
+
+<!-- Hero -->
+<div class="col-hero">
+  <div class="col-hero-inner">
+    <p class="eyebrow">Coleção</p>
+    <h1 id="col-title">Carregando...</h1>
+    <p id="col-sub">Réplicas premium com máxima fidelidade visual.</p>
+  </div>
+</div>
+
+<!-- Brand tabs -->
+<div class="brand-tabs">
+  <button class="brand-tab" data-marca="all"   onclick="switchBrand('all',this)">Todos</button>
+  <button class="brand-tab" data-marca="rolex"  onclick="switchBrand('rolex',this)">Rolex</button>
+  <button class="brand-tab" data-marca="patek"  onclick="switchBrand('patek',this)">Patek Philippe</button>
+  <button class="brand-tab" data-marca="tag"    onclick="switchBrand('tag',this)">TAG Heuer</button>
+  <button class="brand-tab" data-marca="omega"  onclick="switchBrand('omega',this)">Omega</button>
+</div>
+
+<!-- Vídeo Rolex (só aparece na aba Rolex) -->
+<div class="rolex-video-section" id="rolexVideoSection">
+  <div class="rolex-video-wrap">
+    <video autoplay muted loop playsinline>
+      <source src="../marca/rolex-video2.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+
+<!-- Catalog grid -->
+<section class="catalog-section">
+  <div class="catalog-inner">
+    <div class="cat-header">
+      <span class="cat-count" id="cat-count"></span>
+    </div>
+    <div class="pgrid" id="cat-grid"></div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2026 Mont Class. Todos os direitos reservados.</p>
+</footer>
+
+<!-- WhatsApp float -->
+<a href="https://wa.me/5521965966145" target="_blank" rel="noopener" class="wpp-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script src="produtos-data.js"></script>
+<script>
+  const BRAND_LABELS = {
+    all:   { name: 'Todas as Coleções', sub: 'Rolex, Patek Philippe, TAG Heuer e Omega.' },
+    rolex: { name: 'Rolex', sub: 'Cosmograph Daytona, GMT-Master, Datejust e mais.' },
+    patek: { name: 'Patek Philippe', sub: 'Aquanaut, Nautilus e clássicos atemporais.' },
+    tag:   { name: 'TAG Heuer', sub: 'Carrera, Formula 1, Aquaracer e mais.' },
+    omega: { name: 'Omega', sub: 'Speedmaster, Seamaster, De Ville e mais.' },
+  };
+
+  const PRODUCTS = { rolex: [], patek: [], tag: [], omega: [] };
+  Object.values(ALL_PRODUCTS).forEach(p => {
+    if (PRODUCTS[p.brand]) PRODUCTS[p.brand].push(p);
+  });
+
+  let currentBrand = 'all';
+
+  function getParam(key) {
+    return new URLSearchParams(window.location.search).get(key) || 'all';
+  }
+
+  function makeCard(p) {
+    const card = document.createElement('a');
+    card.className = 'pcard';
+    card.href = 'produto.html?p=' + p.handle;
+    card.innerHTML =
+      '<div class="pcard-img">' +
+        '<img src="' + p.images[0] + '" alt="' + p.title + '" loading="lazy">' +
+        (p.disc ? '<span class="pcard-badge">' + p.disc + '</span>' : '') +
+      '</div>' +
+      '<div class="pcard-body">' +
+        '<div class="pcard-name">' + p.title + '</div>' +
+        '<div class="pcard-pricing">' +
+          '<span class="pcard-price">' + p.price + '</span>' +
+          (p.orig ? '<span class="pcard-original">' + p.orig + '</span>' : '') +
+        '</div>' +
+        '<span class="pcard-btn">Ver produto</span>' +
+      '</div>';
+    return card;
+  }
+
+  function renderBrand(brand) {
+    currentBrand = brand;
+    const list = brand === 'all'
+      ? Object.values(ALL_PRODUCTS)
+      : PRODUCTS[brand] || [];
+    const grid = document.getElementById('cat-grid');
+    grid.innerHTML = '';
+    if (list.length === 0) {
+      grid.innerHTML = '<div class="empty-state"><p>Nenhum produto encontrado.</p></div>';
+    } else {
+      list.forEach(p => grid.appendChild(makeCard(p)));
+    }
+    document.getElementById('cat-count').textContent = list.length + ' produto' + (list.length !== 1 ? 's' : '');
+    const info = BRAND_LABELS[brand] || BRAND_LABELS.all;
+    document.getElementById('col-title').textContent = info.name;
+    document.getElementById('col-sub').textContent = info.sub;
+    document.title = info.name + ' — Mont Class';
+    document.getElementById('rolexVideoSection').classList.toggle('visible', brand === 'rolex');
+  }
+
+  function switchBrand(brand, btn) {
+    document.querySelectorAll('.brand-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    history.replaceState(null, '', '?marca=' + brand);
+    renderBrand(brand);
+  }
+
+  // Init
+  const initBrand = getParam('marca');
+  const initTab = document.querySelector('[data-marca="' + initBrand + '"]') || document.querySelector('[data-marca="all"]');
+  if (initTab) initTab.classList.add('active');
+  renderBrand(initBrand);
+</script>
+</body>
+</html>

@@ -6,8 +6,10 @@
 # Arquivo gerado pelo /setup com MCPs específicos do usuário
 _configurar-mcps.md
 
-# Outputs de renderização (binários pesados)
+# Outputs de renderização (binários pesados) — exceto ativos do site
 *.png
+!marca/*.png
+!site/*.png
 
 # Arquivos de dados do usuário (CSVs, planilhas, etc)
 dados/*.csv
