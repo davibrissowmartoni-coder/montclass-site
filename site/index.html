@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mont Class — Relógios de Luxo Premium</title>
+  <meta name="description" content="Mont Class — Réplicas premium de relógios de luxo. Rolex, Patek Philippe, TAG Heuer e Omega com qualidade 1:1. Frete grátis e 1 ano de garantia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg2: #f5f5f5;
+      --bg3: #eeeeee;
+      --border: #e0e0e0;
+      --text: #111111;
+      --text2: #444444;
+      --text3: #888888;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Promo bar ── */
+    .promo-bar {
+      background: #000;
+      color: #fff;
+      height: 34px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .promo-track {
+      display: flex;
+      white-space: nowrap;
+      animation: scroll-promo 40s linear infinite;
+    }
+    .promo-track span {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0 36px;
+    }
+    .promo-track span::before { content: '✦'; margin-right: 14px; }
+    @keyframes scroll-promo {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── Header ── */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      height: 64px;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid #e0e0e0;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-42%);
+      display: flex;
+      align-items: center;
+    }
+    .header-logo img { height: 40px; width: auto; filter: brightness(0); }
+    /* Hamburger */
+    .hamburger-btn {
+      background: none; border: none; cursor: pointer; padding: 8px;
+      display: flex; flex-direction: column; gap: 5px;
+    }
+    .hamburger-btn span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text); border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    /* Search */
+    .search-btn {
+      background: none; border: none; cursor: pointer; padding: 8px;
+      color: var(--text); display: flex; align-items: center;
+    }
+    .search-btn svg { width: 20px; height: 20px; }
+    .header-right { display: flex; justify-content: flex-end; align-items: center; }
+    .btn-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #111;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      text-decoration: none;
+    }
+    .btn-header:hover { opacity: 0.85; }
+
+    /* ── Banner carousel ── */
+    .banner-carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background: #111;
+      line-height: 0;
+    }
+    .banner-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+      will-change: transform;
+    }
+    .banner-slide { min-width: 100%; display: block; }
+    .banner-slide img { width: 100%; height: auto; display: block; object-fit: cover; }
+    .banner-slide .banner-img-mobile { display: none; }
+    .banner-dots {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 7px;
+      z-index: 10;
+    }
+    .banner-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      border: none; cursor: pointer; padding: 0;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .banner-dot.active { background: #fff; transform: scale(1.3); }
+    .banner-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
+      background: rgba(255,255,255,0.18); border: none; cursor: pointer;
+      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+      font-size: 20px; color: #fff; transition: background 0.2s;
+    }
+    .banner-arrow:hover { background: rgba(255,255,255,0.36); }
+    .banner-arrow.prev { left: 16px; }
+    .banner-arrow.next { right: 16px; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      background: #111;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      text-decoration: none;
+    }
+    .btn-primary:hover { opacity: 0.86; }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      background: transparent;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      text-decoration: none;
+    }
+    .btn-ghost:hover { border-color: #555; }
+
+
+
+    /* ── Collections ── */
+    .collections { padding: 96px 48px; }
+    .eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 52px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 48px;
+    }
+    .brand-filter { display: flex; gap: 6px; margin-bottom: 48px; flex-wrap: wrap; }
+    .brand-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text3);
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 26px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .brand-btn:hover { color: var(--text); border-color: #aaa; }
+    .brand-btn.active { background: #111; color: #fff; border-color: #111; }
+
+    /* ── Product grid ── */
+    .pgrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .pcard {
+      display: block;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: inherit;
+      text-decoration: none;
+    }
+    .pcard:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.10);
+    }
+    .pcard-img {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: var(--bg2);
+      position: relative;
+    }
+    .pcard-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+    }
+    .pcard:hover .pcard-img img { transform: scale(1.07); }
+    .pcard-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #111;
+      color: #fff;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      padding: 5px 10px;
+      border-radius: 50px;
+    }
+    .pcard-body { padding: 18px 18px 20px; }
+    .pcard-name {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    .pcard-pricing { display: flex; align-items: baseline; gap: 9px; margin-bottom: 14px; flex-wrap: nowrap; }
+    .pcard-price { font-size: 16px; font-weight: 700; white-space: nowrap; }
+    .pcard-original { font-size: 11px; color: var(--text3); text-decoration: line-through; }
+    .pcard-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text3);
+      pointer-events: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 11px 12px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .pcard:hover .pcard-btn { background: #111; color: #fff; border-color: #111; }
+
+
+    /* ── Video section ── */
+    .video-section {
+      position: relative;
+      overflow: hidden;
+      background: #000;
+      border-top: 1px solid #1a1a1a;
+    }
+    .video-wrap {
+      position: relative;
+      padding-bottom: 42.25%;
+      height: 0;
+      overflow: hidden;
+    }
+    @media (max-width: 768px) { .video-wrap { padding-bottom: 62%; } }
+    .video-wrap iframe {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%; height: 100%;
+      border: 0;
+      pointer-events: none;
+    }
+
+    /* ── Guarantee strip ── */
+    .guarantee {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 40px 48px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .g-item { display: flex; align-items: flex-start; gap: 14px; }
+    .g-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .g-item h4 { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+    .g-item p { font-size: 12px; color: var(--text3); line-height: 1.5; }
+
+    /* ── Founder full ── */
+    .founder-full {
+      position: relative;
+      border-top: 1px solid var(--border);
+      overflow: hidden;
+      line-height: 0;
+    }
+    .founder-full > img {
+      width: 100%;
+      height: auto;
+      max-height: 90vh;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .founder-full-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 14px;
+      background: linear-gradient(to top, rgba(0,0,0,0.48) 0%, transparent 40%);
+    }
+    .btn-wpp-founder {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #25D366;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.28);
+    }
+    .btn-wpp-founder:hover { opacity: 0.9; transform: scale(1.03); }
+    .btn-wpp-founder svg { width: 14px; height: 14px; fill: #fff; flex-shrink: 0; }
+
+    /* ── Coleções carousel ── */
+    .colecoes-marcas { border-top: 1px solid var(--border); overflow: hidden; background: var(--bg2); padding: 48px 0; }
+    .marcas-carousel {
+      overflow-x: scroll;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: grab;
+      -webkit-overflow-scrolling: touch;
+    }
+    .marcas-carousel::-webkit-scrollbar { display: none; }
+    .marcas-carousel.dragging { cursor: grabbing; }
+    .marcas-track { display: flex; gap: 18px; padding: 8px 40px 8px; }
+    .marca-card {
+      width: 32vw;
+      flex-shrink: 0;
+      display: block;
+      overflow: hidden;
+      line-height: 0;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .marca-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.16);
+    }
+    .marca-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      user-select: none;
+      pointer-events: none;
+    }
+    @media (max-width: 768px) {
+      .marca-card { width: 72vw; border-radius: 16px; }
+      .marcas-track { gap: 14px; padding: 8px 24px 8px; }
+    }
+
+    /* ── About ── */
+    .about {
+      padding: 96px 48px;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+    }
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      align-items: start;
+    }
+    .about-text h2 {
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin: 12px 0 22px;
+    }
+    .about-text p { font-size: 14px; color: var(--text2); line-height: 1.9; margin-bottom: 14px; }
+    .about-img { border-radius: 12px; overflow: hidden; }
+    .about-img img { width: 100%; display: block; object-fit: cover; border-radius: 12px; }
+
+    /* ── Rolex Video ── */
+    .rolex-video-section { background: #000; overflow: hidden; line-height: 0; }
+    .rolex-video { width: 100%; display: block; max-height: 580px; object-fit: cover; }
+
+    /* ── FAQ ── */
+    .faq { padding: 96px 48px; border-top: 1px solid var(--border); }
+    .faq-inner { max-width: 720px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: left;
+      padding: 22px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      gap: 16px;
+    }
+    .faq-icon { font-size: 20px; color: var(--text3); flex-shrink: 0; transition: transform 0.25s; line-height: 1; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.85;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s;
+    }
+    .faq-item.open .faq-a { max-height: 400px; padding-bottom: 22px; }
+
+
+    /* ── Payment section ── */
+    .payment-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 60px 48px;
+    }
+    .payment-inner { max-width: 900px; margin: 0 auto; }
+    .payment-heading {
+      font-size: 11px; font-weight: 800; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--text3);
+      margin-bottom: 20px;
+    }
+    .payment-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+    .pay-logo {
+      display: flex; align-items: center; justify-content: center;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      padding: 8px 14px; background: #fff; min-width: 80px; height: 48px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .pay-logo:hover { border-color: #bbb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+
+    /* individual brand styles */
+    .pay-visa { font-size: 20px; font-weight: 900; font-style: italic; color: #1A1F71; font-family: Arial,sans-serif; letter-spacing: -1px; }
+    .pay-mc-wrap { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+    .pay-mc-circles { position: relative; width: 36px; height: 22px; }
+    .pay-mc-r { position: absolute; left: 0; top: 0; width: 22px; height: 22px; background: #EB001B; border-radius: 50%; }
+    .pay-mc-y { position: absolute; right: 0; top: 0; width: 22px; height: 22px; background: #F79E1B; border-radius: 50%; opacity: 0.95; }
+    .pay-mc-label { font-size: 7px; font-weight: 700; color: #333; letter-spacing: 0.3px; font-family: Arial,sans-serif; }
+    .pay-hiper { font-size: 12px; font-weight: 800; color: #CC1C2E; font-family: Arial,sans-serif; }
+    .pay-elo { font-size: 19px; font-weight: 900; color: #000; font-family: 'Arial Black',Arial,sans-serif; }
+    .pay-amex-wrap { display: flex; flex-direction: column; align-items: center; line-height: 1.1; }
+    .pay-amex-a { font-size: 7px; font-weight: 700; color: #016FD0; letter-spacing: 1.5px; font-family: Arial,sans-serif; }
+    .pay-amex-b { font-size: 9px; font-weight: 900; color: #016FD0; letter-spacing: 1.5px; font-family: Arial,sans-serif; }
+    .pay-diners-wrap { display: flex; flex-direction: column; align-items: center; }
+    .pay-diners-a { font-size: 11px; font-weight: 700; color: #004A97; font-family: Arial,sans-serif; }
+    .pay-diners-b { font-size: 9px; font-weight: 500; color: #004A97; font-family: Arial,sans-serif; }
+    .pay-pix-wrap { display: flex; align-items: center; gap: 6px; }
+    .pay-pix-icon { width: 18px; height: 18px; background: #32BCAD; border-radius: 3px; transform: rotate(45deg); flex-shrink: 0; }
+    .pay-pix-text { font-size: 14px; font-weight: 800; color: #32BCAD; font-family: Arial,sans-serif; letter-spacing: 0.5px; }
+    .pay-boleto-wrap { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .pay-boleto-bars { display: flex; gap: 2px; height: 18px; align-items: stretch; }
+    .pay-boleto-bars span { background: #222; border-radius: 1px; }
+    .pay-boleto-label { font-size: 7px; color: #555; font-weight: 600; letter-spacing: 0.3px; font-family: Arial,sans-serif; }
+
+    .payment-divider { border: none; border-top: 1px solid var(--border); margin: 0 0 40px; }
+    .trust-logos {
+      display: flex; gap: 16px; align-items: stretch; flex-wrap: wrap;
+    }
+    .trust-logo-item {
+      display: flex; align-items: center; gap: 10px;
+      border: 1.5px solid var(--border); border-radius: 10px;
+      padding: 12px 18px; background: #fff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .trust-logo-item:hover { border-color: #bbb; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .trust-icon { width: 32px; height: 32px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .trust-text h5 { font-size: 12px; font-weight: 700; color: var(--text); margin: 0 0 2px; }
+    .trust-text p { font-size: 10px; color: var(--text3); margin: 0; line-height: 1.4; }
+    @media (max-width: 768px) {
+      .payment-section { padding: 40px 24px; }
+      .payment-grid { gap: 8px; }
+      .pay-logo { padding: 8px 10px; min-width: 68px; height: 42px; }
+      .trust-logos { gap: 10px; }
+    }
+    @media (max-width: 480px) {
+      .pay-logo { min-width: calc(25% - 8px); }
+    }
+
+            /* ── Footer ── */
+    .footer { border-top: 1px solid var(--border); padding: 64px 48px 40px; }
+    .footer-top {
+      max-width: 1200px;
+      margin: 0 auto 48px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+    }
+    .footer-brand img { height: 28px; margin-bottom: 14px; filter: brightness(0); }
+    .footer-brand p { font-size: 12px; color: var(--text3); line-height: 1.75; max-width: 240px; }
+    .footer-col h5 {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text2);
+      margin-bottom: 14px;
+    }
+    .footer-col a { display: block; color: var(--text3); font-size: 12px; margin-bottom: 10px; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--text); }
+    .footer-col p { color: var(--text3); font-size: 12px; margin-bottom: 8px; line-height: 1.5; }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-bottom p { font-size: 11px; color: var(--text3); }
+
+
+    /* ── WhatsApp float ── */
+    .wpp-float {
+      position: fixed;
+      bottom: 26px;
+      right: 26px;
+      z-index: 999;
+      width: 52px;
+      height: 52px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 22px rgba(37,211,102,0.35);
+      transition: transform 0.2s;
+    }
+    .wpp-float:hover { transform: scale(1.09); }
+    .wpp-float svg { width: 25px; height: 25px; fill: white; }
+
+    /* ── Bestsellers ── */
+    .bestsellers { padding: 80px 48px; border-top: 1px solid var(--border); }
+    .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; flex-wrap: wrap; gap: 16px; }
+    .section-header-left h2 { font-size: clamp(24px, 3vw, 40px); font-weight: 800; letter-spacing: -0.03em; margin-top: 6px; }
+    .btn-see-all { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); border-bottom: 1px solid var(--border); padding-bottom: 3px; transition: color 0.2s, border-color 0.2s; white-space: nowrap; }
+    .btn-see-all:hover { color: var(--text); border-color: #aaa; }
+
+    /* ── Coleções por marca ── */
+    .colecoes-marcas { border-top: 1px solid var(--border); }
+    .marcas-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+    .marca-card { display: block; overflow: hidden; line-height: 0; position: relative; }
+    .marca-card img { width: 100%; height: auto; display: block; transition: transform 0.5s ease; }
+    .marca-card:hover img { transform: scale(1.04); }
+
+    /* ── Responsive ── */
+    @media (max-width: 1100px) {
+    }
+    /* ── Instagram section ── */
+    .insta {
+      padding: 80px 0 64px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .insta-header { margin-bottom: 40px; padding: 0 48px; }
+    .insta-handle {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text3);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .insta-handle svg { width: 18px; height: 18px; }
+    .insta-title {
+      font-size: clamp(24px, 3vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+    .insta-sub { font-size: 13px; color: var(--text3); }
+    /* carousel */
+    .insta-grid {
+      overflow-x: scroll;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: grab;
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: 40px;
+    }
+    .insta-grid::-webkit-scrollbar { display: none; }
+    .insta-grid.dragging { cursor: grabbing; }
+    .insta-track {
+      display: flex;
+      gap: 10px;
+      padding: 0 40px;
+      width: max-content;
+    }
+    .insta-post {
+      width: 26vw;
+      max-width: 320px;
+      min-width: 200px;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      position: relative;
+      background: var(--bg2);
+      cursor: pointer;
+      flex-shrink: 0;
+      border-radius: 14px;
+    }
+    .insta-post img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
+      user-select: none;
+      pointer-events: none;
+    }
+    .insta-post:hover img { transform: scale(1.08); }
+    @media (max-width: 768px) {
+      .insta-post { width: 68vw; border-radius: 12px; }
+      .insta-track { gap: 10px; padding: 0 24px; }
+    }
+    .insta-post-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .insta-post:hover .insta-post-overlay { opacity: 1; }
+    .insta-post-overlay svg { width: 28px; height: 28px; fill: #fff; }
+    .btn-insta {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: #111;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-insta:hover { opacity: 0.82; }
+    .btn-insta svg { width: 16px; height: 16px; fill: #fff; }
+    @media (max-width: 768px) {
+      .header { padding: 0 20px; }
+      .header-logo img { height: 44px; }
+      .marcas-grid { grid-template-columns: repeat(2, 1fr); }
+      .banner-slide .banner-img-desktop { display: none; }
+      .banner-slide .banner-img-mobile  { display: block; }
+      .collections { padding: 64px 24px; }
+      .pgrid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .guarantee { grid-template-columns: 1fr 1fr; padding: 32px 24px; }
+      .about { padding: 64px 24px; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .faq { padding: 64px 24px; }
+      .footer { padding: 48px 24px 32px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-brand { grid-column: 1 / -1; }
+      .insta { padding: 64px 24px; }
+      .insta-grid { grid-template-columns: repeat(3, 1fr); }
+      .bestsellers { padding: 64px 24px; }
+      .banner-slide .banner-img-desktop { display: none; }
+      .banner-slide .banner-img-mobile  { display: block; }
+    }
+    @media (max-width: 480px) {
+      .pgrid { grid-template-columns: repeat(2, 1fr); }
+      .hero-title { font-size: 42px; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .hero-actions a { justify-content: center; }
+      .guarantee { grid-template-columns: 1fr; }
+      .insta-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── Carousel de marcas (arrastar) ── */
+  const mc = document.getElementById('marcasCarousel');
+  if (mc) {
+    let mcDown = false, mcStartX, mcScrollLeft;
+    mc.addEventListener('mousedown', e => { mcDown = true; mc.classList.add('dragging'); mcStartX = e.pageX - mc.offsetLeft; mcScrollLeft = mc.scrollLeft; });
+    mc.addEventListener('mouseleave', () => { mcDown = false; mc.classList.remove('dragging'); });
+    mc.addEventListener('mouseup', () => { mcDown = false; mc.classList.remove('dragging'); });
+    mc.addEventListener('mousemove', e => { if (!mcDown) return; e.preventDefault(); mc.scrollLeft = mcScrollLeft - (e.pageX - mc.offsetLeft - mcStartX) * 1.4; });
+  }
+
+  /* ── Side menu ── */
+    .menu-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+      z-index: 500; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .menu-overlay.open { opacity: 1; pointer-events: all; }
+    .side-menu {
+      position: fixed; top: 0; left: 0; bottom: 0;
+      width: 300px; max-width: 85vw;
+      background: #fff; z-index: 600;
+      transform: translateX(-100%);
+      transition: transform 0.32s cubic-bezier(0.4,0,0.2,1);
+      display: flex; flex-direction: column;
+      box-shadow: 4px 0 32px rgba(0,0,0,0.12);
+    }
+    .side-menu.open { transform: translateX(0); }
+    .side-menu-top {
+      height: 64px; display: flex; align-items: center;
+      justify-content: flex-end; padding: 0 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .side-close-btn {
+      background: none; border: none; cursor: pointer;
+      font-size: 18px; color: var(--text3); padding: 8px;
+      transition: color 0.2s;
+    }
+    .side-close-btn:hover { color: var(--text); }
+    .side-menu-body { padding: 24px 0; overflow-y: auto; flex: 1; }
+    .side-section-label {
+      font-size: 9px; font-weight: 800; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--text3);
+      padding: 18px 28px 8px; margin: 0;
+    }
+    .side-section-label:first-child { padding-top: 4px; }
+    .side-link {
+      display: block; padding: 13px 28px;
+      font-size: 14px; font-weight: 600; color: var(--text2);
+      border-left: 3px solid transparent;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .side-link:hover {
+      color: var(--text); border-color: #111;
+      background: var(--bg2);
+    }
+
+    /* ── Search overlay ── */
+    .search-overlay {
+      position: fixed; inset: 0; background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(16px); z-index: 700;
+      display: flex; flex-direction: column;
+      transform: translateY(-8px); opacity: 0; pointer-events: none;
+      transition: opacity 0.25s, transform 0.25s;
+    }
+    .search-overlay.open { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .search-overlay-top {
+      display: flex; align-items: center; gap: 16px;
+      padding: 24px 48px; border-bottom: 1px solid var(--border);
+    }
+    .search-input {
+      flex: 1; font-family: 'Inter', sans-serif;
+      font-size: 20px; font-weight: 500; color: var(--text);
+      border: none; outline: none; background: transparent;
+      min-width: 0;
+    }
+    .search-input::placeholder { color: var(--text3); }
+    .search-close-btn {
+      background: none; border: none; cursor: pointer;
+      font-size: 22px; color: var(--text3); padding: 4px 8px;
+      transition: color 0.2s; flex-shrink: 0;
+    }
+    .search-close-btn:hover { color: var(--text); }
+    .search-results-wrap {
+      flex: 1; overflow-y: auto; padding: 32px 48px;
+    }
+    .search-results-wrap .pgrid { max-width: 1200px; margin: 0 auto; }
+    .search-empty { text-align: center; color: var(--text3); font-size: 14px; padding: 48px 0; }
+    .search-hint { text-align: center; color: var(--text3); font-size: 13px; padding: 48px 0; }
+    @media (max-width: 768px) {
+      .search-overlay-top { padding: 16px 20px; }
+      .search-input { font-size: 16px; }
+      .search-results-wrap { padding: 24px 20px; }
+    }
+
+    /* ── Marcas section ── */
+    .marcas-section {
+      border-top: 1px solid var(--border);
+      background: var(--bg2); padding: 56px 48px;
+    }
+    .marcas-section-inner { max-width: 860px; margin: 0 auto; }
+    .marcas-links { display: flex; flex-direction: column; gap: 0; }
+    .marca-link {
+      display: flex; align-items: center;
+      padding: 22px 0; border-bottom: 1px solid var(--border);
+      gap: 16px; transition: background 0.2s;
+      text-decoration: none; color: var(--text);
+    }
+    .marca-link:last-child { border-bottom: none; }
+    .marca-link:hover { color: var(--text); }
+    .marca-link:hover .marca-link-name { letter-spacing: 0; }
+    .marca-link:hover .marca-link-arrow { transform: translateX(6px); }
+    .marca-link-name {
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 800; letter-spacing: -0.02em;
+      flex: 1; transition: letter-spacing 0.3s;
+    }
+    .marca-link-sub {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text3);
+    }
+    .marca-link-arrow {
+      font-size: 20px; color: var(--text3);
+      transition: transform 0.25s;
+    }
+    @media (max-width: 768px) {
+      .marcas-section { padding: 40px 24px; }
+      .marca-link-name { font-size: 22px; }
+    }
+
+    /* ── Wrist Tool ── */
+    .wrist-tool {
+      background: #0a0a0a; border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a; padding: 52px 48px 24px;
+    }
+    .wrist-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+    .wrist-inner .eyebrow-dark {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.3em;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
+      margin-bottom: 20px; display: block;
+    }
+    .wrist-inner h2 {
+      font-size: clamp(30px, 4vw, 54px); font-weight: 800;
+      letter-spacing: -0.03em; color: #ffffff; line-height: 1.08;
+      margin-bottom: 20px;
+    }
+    .wrist-inner > p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.85; margin-bottom: 36px; }
+    .sizes-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 16px; }
+    .sizes-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; justify-content: center; }
+    .size-btn {
+      background: none; border: 1.5px solid #3a3a3a; border-radius: 50px;
+      cursor: pointer; font-family: 'Inter', sans-serif;
+      font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.65);
+      padding: 10px 20px; letter-spacing: 0.05em; transition: all 0.22s ease;
+    }
+    .size-btn:hover { border-color: #666; color: #fff; }
+    .size-btn.active { background: #fff; border-color: #fff; color: #000; }
+    .wrist-rec { opacity: 0; height: 0; overflow: hidden; transform: translateY(10px); transition: opacity 0.4s ease, transform 0.4s ease; pointer-events: none; }
+    .wrist-rec.show { opacity: 1; height: auto; overflow: visible; transform: none; pointer-events: auto; }
+    .rec-box {
+      background: #141414; border: 1px solid #2a2a2a; border-radius: 16px;
+      padding: 20px 36px; margin-bottom: 12px;
+    }
+    .rec-text { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.75; margin: 0; }
+    .rec-text strong { color: #ffffff; }
+    @media (max-width: 768px) { .wrist-tool { padding: 40px 24px 20px; } }
+    @media (max-width: 540px) { .sizes-row { gap: 7px; } .size-btn { font-size: 11px; padding: 8px 14px; } }
+
+  </style>
+</head>
+<body>
+
+<!-- Promo bar -->
+<div class="promo-bar" aria-hidden="true">
+  <div class="promo-track">
+    <span>30% OFF em toda a loja</span>
+    <span>1 ano de garantia de maquinário</span>
+    <span>PIX e cartão de crédito</span>
+    <span>Qualidade 1:1 — máxima fidelidade visual</span>
+    <span>+799 relógios entregues</span>
+    <span>Atendimento via WhatsApp</span>
+    <span>30% OFF em toda a loja</span>
+    <span>1 ano de garantia de maquinário</span>
+    <span>PIX e cartão de crédito</span>
+    <span>Qualidade 1:1 — máxima fidelidade visual</span>
+    <span>+799 relógios entregues</span>
+    <span>Atendimento via WhatsApp</span>
+  </div>
+</div>
+
+<!-- Menu overlay + side panel -->
+<div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
+<aside class="side-menu" id="sideMenu">
+  <div class="side-menu-top">
+    <button class="side-close-btn" onclick="closeMenu()" aria-label="Fechar">&#x2715;</button>
+  </div>
+  <div class="side-menu-body">
+    <p class="side-section-label">Coleções</p>
+    <a href="catalogo.html?marca=all" class="side-link" onclick="closeMenu()">Todas as Marcas</a>
+    <a href="catalogo.html?marca=rolex" class="side-link" onclick="closeMenu()">Rolex</a>
+    <a href="catalogo.html?marca=patek" class="side-link" onclick="closeMenu()">Patek Philippe</a>
+    <a href="catalogo.html?marca=tag" class="side-link" onclick="closeMenu()">TAG Heuer</a>
+    <a href="catalogo.html?marca=omega" class="side-link" onclick="closeMenu()">Omega</a>
+    <p class="side-section-label">Informações</p>
+    <a href="politicas.html" class="side-link" onclick="closeMenu()">Política de Rastreamento</a>
+    <a href="politicas.html" class="side-link" onclick="closeMenu()">Garantia</a>
+    <a href="#sobre" class="side-link" onclick="closeMenu()">Sobre Nós</a>
+    <a href="https://wa.me/5521965966145" target="_blank" rel="noopener" class="side-link">Contato</a>
+  </div>
+</aside>
+
+<!-- Search overlay -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-overlay-top">
+    <input type="text" id="searchInput" class="search-input"
+      placeholder="Buscar modelo, marca ou referência..."
+      autocomplete="off" oninput="handleSearch(this.value)">
+    <button class="search-close-btn" onclick="closeSearch()" aria-label="Fechar">&#x2715;</button>
+  </div>
+  <div class="search-results-wrap">
+    <div class="pgrid" id="searchGrid"></div>
+    <p class="search-empty" id="searchEmpty" style="display:none;">Nenhum resultado encontrado.</p>
+    <p class="search-hint" id="searchHint">Digite o nome do modelo ou marca para buscar.</p>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-left">
+    <button class="hamburger-btn" onclick="openMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <a href="index.html" class="header-logo">
+    <img src="../marca/logo-cropped.png" alt="Mont Class">
+  </a>
+  <div class="header-right">
+    <button class="search-btn" onclick="openSearch()" aria-label="Buscar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- Banner carousel -->
+<div class="banner-carousel">
+  <div class="banner-track" id="bannerTrack">
+    <a class="banner-slide" href="catalogo.html?marca=tag">
+      <img class="banner-img-desktop" src="../marca/banner1-pc.png" alt="Coleção TAG Heuer — Mont Class">
+      <img class="banner-img-mobile"  src="../marca/banner1-mobile.png" alt="Coleção TAG Heuer — Mont Class">
+    </a>
+    <a class="banner-slide" href="catalogo.html?marca=patek">
+      <img class="banner-img-desktop" src="../marca/banner2-pc.png" alt="Coleção Patek Philippe — Mont Class">
+      <img class="banner-img-mobile"  src="../marca/banner2-mobile.png" alt="Coleção Patek Philippe — Mont Class">
+    </a>
+    <a class="banner-slide" href="catalogo.html?marca=rolex">
+      <img class="banner-img-desktop" src="../marca/banner3-pc.png" alt="Coleção Rolex — Mont Class">
+      <img class="banner-img-mobile"  src="../marca/banner3-mobile.png" alt="Coleção Rolex — Mont Class">
+    </a>
+  </div>
+  <button class="banner-arrow prev" onclick="bannerMove(-1)" aria-label="Anterior">&#8592;</button>
+  <button class="banner-arrow next" onclick="bannerMove(1)"  aria-label="Próximo">&#8594;</button>
+  <div class="banner-dots" id="bannerDots">
+    <button class="banner-dot active" onclick="bannerGoTo(0)"></button>
+    <button class="banner-dot"        onclick="bannerGoTo(1)"></button>
+    <button class="banner-dot"        onclick="bannerGoTo(2)"></button>
+  </div>
+</div>
+
+<!-- Mais Vendidos -->
+<section class="bestsellers" id="mais-vendidos">
+  <div class="section-header">
+    <div class="section-header-left">
+      <p class="eyebrow">Os preferidos dos clientes</p>
+      <h2>Mais Vendidos</h2>
+    </div>
+    <a href="#colecoes" class="btn-see-all">Ver catálogo completo →</a>
+  </div>
+  <div class="pgrid" id="pgrid-bestsellers"></div>
+</section>
+
+<!-- Founder full width -->
+<section class="founder-full">
+  <img src="../marca/foto-davi.png" alt="Davi Martoni — Fundador da Mont Class">
+  <div class="founder-full-overlay">
+    <a href="https://wa.me/5521965966145?text=Olá%20Davi!%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20os%20relógios." target="_blank" rel="noopener" class="btn-wpp-founder">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Falar com o Davi
+    </a>
+  </div>
+</section>
+
+<!-- Coleções por marca — cada imagem abre a página da marca -->
+<section class="colecoes-marcas">
+  <div class="marcas-carousel" id="marcasCarousel">
+    <div class="marcas-track">
+      <a href="catalogo.html?marca=tag" class="marca-card">
+        <img src="../marca/colecao-tagheuer.png" alt="TAG Heuer" loading="lazy">
+      </a>
+      <a href="catalogo.html?marca=rolex" class="marca-card">
+        <img src="../marca/colecao-rolex.png" alt="Rolex" loading="lazy">
+      </a>
+      <a href="catalogo.html?marca=patek" class="marca-card">
+        <img src="../marca/colecao-patek.png" alt="Patek Philippe" loading="lazy">
+      </a>
+      <a href="catalogo.html?marca=omega" class="marca-card">
+        <img src="../marca/colecao-omega.png" alt="Omega" loading="lazy">
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Collections -->
+
+<!-- Guarantee strip -->
+<div class="guarantee">
+  <div class="g-item">
+    <div class="g-icon">🛡</div>
+    <div>
+      <h4>Garantia 1 Ano</h4>
+      <p>Relógios com maquinário automático possuem garantia de 1 ano.</p>
+    </div>
+  </div>
+  <div class="g-item">
+    <div class="g-icon">📦</div>
+    <div>
+      <h4>Entrega Rápida</h4>
+      <p>Prazo de 1 a 10 dias úteis. Frete grátis em todo o Brasil.</p>
+    </div>
+  </div>
+  <div class="g-item">
+    <div class="g-icon">💳</div>
+    <div>
+      <h4>Pagamento Seguro</h4>
+      <p>Mercado Pago, PIX e cartão. Plataforma 100% segura.</p>
+    </div>
+  </div>
+  <div class="g-item">
+    <div class="g-icon">💬</div>
+    <div>
+      <h4>Atendimento Humano</h4>
+      <p>Seg–Sáb, 8h–19h. WhatsApp: (21) 96596-6145</p>
+    </div>
+  </div>
+</div>
+
+<!-- Instagram / Prova social -->
+<section class="insta">
+  <div class="insta-header">
+    <div class="insta-handle">
+      <svg viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      @mont_class
+    </div>
+    <h2 class="insta-title">Nossos Clientes</h2>
+    <p class="insta-sub">Relógios entregues, clientes satisfeitos. Cada foto é real.</p>
+  </div>
+
+  <div class="insta-grid" id="instaCarousel">
+    <div class="insta-track">
+    <a class="insta-post" href="https://instagram.com/mont_class" target="_blank" rel="noopener">
+      <img src="../marca/insta-1.png" alt="Mont Class" loading="lazy">
+      <div class="insta-post-overlay"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+    </a>
+    <a class="insta-post" href="https://instagram.com/mont_class" target="_blank" rel="noopener">
+      <img src="../marca/insta-2.jpg" alt="Cliente Mont Class" loading="lazy">
+      <div class="insta-post-overlay"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+    </a>
+    <a class="insta-post" href="https://instagram.com/mont_class" target="_blank" rel="noopener">
+      <img src="../marca/insta-3.jpg" alt="Entrega Mont Class" loading="lazy">
+      <div class="insta-post-overlay"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+    </a>
+    <a class="insta-post" href="https://instagram.com/mont_class" target="_blank" rel="noopener">
+      <img src="../marca/insta-4.jpg" alt="Relógio Mont Class" loading="lazy">
+      <div class="insta-post-overlay"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+    </a>
+    <a class="insta-post" href="https://instagram.com/mont_class" target="_blank" rel="noopener">
+      <img src="../marca/insta-5.jpg" alt="Mont Class" loading="lazy">
+      <div class="insta-post-overlay"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+    </a>
+    <a class="insta-post" href="https://instagram.com/mont_class" target="_blank" rel="noopener">
+      <img src="../marca/insta-6.jpg" alt="Mont Class" loading="lazy">
+      <div class="insta-post-overlay"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+    </a>
+    <a class="insta-post" href="https://instagram.com/mont_class" target="_blank" rel="noopener">
+      <img src="../marca/insta-7.jpg" alt="Mont Class" loading="lazy">
+      <div class="insta-post-overlay"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+    </a>
+    <a class="insta-post" href="https://instagram.com/mont_class" target="_blank" rel="noopener">
+      <img src="../marca/insta-8.jpg" alt="Mont Class" loading="lazy">
+      <div class="insta-post-overlay"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+    </a>
+    </div>
+  </div>
+
+  <a href="https://instagram.com/mont_class" target="_blank" rel="noopener" class="btn-insta">
+    <svg viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    Ver no Instagram →
+  </a>
+</section>
+
+
+<!-- Medidor de pulso -->
+<section class="wrist-tool" id="medidor">
+  <div class="wrist-inner">
+    <span class="eyebrow-dark">Ferramenta Mont Class</span>
+    <h2>Descubra o Tamanho<br>Ideal para o Seu Pulso.</h2>
+    <p>Informe a medida do seu pulso e descubra qual tamanho de caixa valoriza mais o seu estilo — sem achismo, sem erro.</p>
+
+    <p class="sizes-label">Medida do pulso</p>
+    <div class="sizes-row">
+      <button class="size-btn" onclick="selectWristSize(14,this)">14 cm</button>
+      <button class="size-btn" onclick="selectWristSize(15,this)">15 cm</button>
+      <button class="size-btn" onclick="selectWristSize(16,this)">16 cm</button>
+      <button class="size-btn" onclick="selectWristSize(17,this)">17 cm</button>
+      <button class="size-btn" onclick="selectWristSize(18,this)">18 cm</button>
+      <button class="size-btn" onclick="selectWristSize(19,this)">19 cm</button>
+      <button class="size-btn" onclick="selectWristSize(20,this)">20 cm</button>
+    </div>
+
+    <div class="wrist-rec" id="wristRec">
+      <div class="rec-box">
+        <p class="rec-text">Para um pulso de <strong id="recCm"></strong>, o ideal são caixas entre <strong id="recSize"></strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Rolex Video -->
+<section class="rolex-video-section">
+  <video class="rolex-video" autoplay muted loop playsinline>
+    <source src="rolex-video.mp4" type="video/mp4">
+  </video>
+</section>
+
+<!-- About -->
+<section class="about" id="sobre">
+  <div class="about-inner">
+    <div class="about-text">
+      <p class="eyebrow">Sobre a Mont Class</p>
+      <h2>Qualidade que<br>você vê e sente.</h2>
+      <p>Na Mont Class, cada relógio é selecionado pela fidelidade visual ao modelo original — acabamento, peso, mecanismo e embalagem.</p>
+      <p>Atendemos empresários, advogados e profissionais que buscam o visual de um relógio de luxo sem comprometer o orçamento. Discrição e confiança em cada pedido.</p>
+      <a href="https://wa.me/5521965966145" target="_blank" rel="noopener" class="btn-primary" style="margin-top:24px; display:inline-flex;">
+        Falar com a gente
+      </a>
+    </div>
+    <div class="about-img">
+      <img src="../marca/foto-loja.png" alt="Davi Martoni — Mont Class">
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <p class="eyebrow" style="text-align:center">Dúvidas</p>
+    <h2 class="section-title" style="text-align:center; margin-bottom:52px">Perguntas Frequentes</h2>
+
+    <div class="faq-item">
+      <button class="faq-q">Como faço meu pedido?<span class="faq-icon">+</span></button>
+      <div class="faq-a">Veja o modelo desejado em nosso catálogo e entre em contato pelo WhatsApp. Nossa equipe irá ajudar você a encontrar o relógio ideal e finalizar o pedido de forma simples e rápida.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Qual o prazo de entrega?<span class="faq-icon">+</span></button>
+      <div class="faq-a">Prazo de entrega de 1 a 10 dias úteis para todo o Brasil, dependendo da sua região. Após o despacho, você recebe o código de rastreamento diretamente no WhatsApp.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Como funciona a garantia?<span class="faq-icon">+</span></button>
+      <div class="faq-a">Todos os relógios com maquinário automático possuem garantia de 1 ano. Em caso de defeito no mecanismo, cobrimos o conserto ou a substituição da peça.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Quais formas de pagamento são aceitas?<span class="faq-icon">+</span></button>
+      <div class="faq-a">PIX e cartão de crédito (Visa, Mastercard, Elo, American Express, Diners). Para pedidos via PIX, há condições especiais — pergunte no atendimento.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">O relógio vem com caixa e acessórios?<span class="faq-icon">+</span></button>
+      <div class="faq-a">O valor anunciado refere-se apenas ao relógio. Caixa e acessórios são opcionais e possuem valor adicional, pois trabalhamos com uma linha premium de alta qualidade.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Posso acompanhar meu pedido?<span class="faq-icon">+</span></button>
+      <div class="faq-a">Sim. Assim que o pedido for despachado, você recebe o código de rastreamento pelo WhatsApp para acompanhar em tempo real.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="../marca/logo-cropped.png" alt="Mont Class">
+      <p>Réplicas premium de relógios de luxo. Qualidade 1:1, frete grátis e 1 ano de garantia. Entregamos em todo o Brasil.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Coleções</h5>
+      <a href="#colecoes" onclick="goTo('rolex',event)">Rolex</a>
+      <a href="#colecoes" onclick="goTo('patek',event)">Patek Philippe</a>
+      <a href="#colecoes" onclick="goTo('tag',event)">TAG Heuer</a>
+      <a href="#colecoes" onclick="goTo('omega',event)">Omega</a>
+    </div>
+    <div class="footer-col">
+      <h5>Informações</h5>
+      <a href="#sobre">Sobre a Mont Class</a>
+      <a href="#faq">Perguntas Frequentes</a>
+      <a href="https://montclassco.com/policies/refund-policy" target="_blank">Política de Troca</a>
+      <a href="https://montclassco.com/policies/shipping-policy" target="_blank">Política de Envio</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contato</h5>
+      <p>📱 (21) 96596-6145</p>
+      <p>✉️ suporte@montclass.com</p>
+      <p>Seg–Sáb: 8h às 19h</p>
+      <a href="https://instagram.com/mont_class" target="_blank" style="margin-top:8px">Instagram</a>
+      <a href="https://wa.me/5521965966145" target="_blank">WhatsApp</a>
+    </div>
+  </div>
+  <!-- Formas de Pagamento + Loja Verificada -->
+  <div class="payment-section">
+    <div class="payment-inner">
+
+      <h3 class="payment-heading">Formas de Pagamento</h3>
+      <div class="payment-grid">
+        <!-- Visa -->
+        <div class="pay-logo"><span class="pay-visa">VISA</span></div>
+        <!-- Mastercard -->
+        <div class="pay-logo">
+          <div class="pay-mc-wrap">
+            <div class="pay-mc-circles">
+              <div class="pay-mc-r"></div>
+              <div class="pay-mc-y"></div>
+            </div>
+            <span class="pay-mc-label">mastercard</span>
+          </div>
+        </div>
+        <!-- Hipercard -->
+        <div class="pay-logo"><span class="pay-hiper">Hipercard</span></div>
+        <!-- Elo -->
+        <div class="pay-logo"><span class="pay-elo">elo</span></div>
+        <!-- American Express -->
+        <div class="pay-logo">
+          <div class="pay-amex-wrap">
+            <span class="pay-amex-a">AMERICAN</span>
+            <span class="pay-amex-b">EXPRESS</span>
+          </div>
+        </div>
+        <!-- Diners Club -->
+        <div class="pay-logo">
+          <div class="pay-diners-wrap">
+            <span class="pay-diners-a">Diners</span>
+            <span class="pay-diners-b">Club</span>
+          </div>
+        </div>
+        <!-- PIX -->
+        <div class="pay-logo">
+          <div class="pay-pix-wrap">
+            <div class="pay-pix-icon"></div>
+            <span class="pay-pix-text">Pix</span>
+          </div>
+        </div>
+        <!-- Boleto -->
+        <div class="pay-logo">
+          <div class="pay-boleto-wrap">
+            <div class="pay-boleto-bars">
+              <span style="width:3px"></span><span style="width:1.5px"></span><span style="width:2px"></span>
+              <span style="width:1px"></span><span style="width:3px"></span><span style="width:1.5px"></span>
+              <span style="width:2px"></span><span style="width:3px"></span><span style="width:1px"></span>
+              <span style="width:2px"></span><span style="width:3px"></span><span style="width:1.5px"></span>
+              <span style="width:2px"></span>
+            </div>
+            <span class="pay-boleto-label">Boleto</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="payment-divider"></div>
+
+      <h3 class="payment-heading">Loja Verificada</h3>
+      <div class="trust-logos">
+        <!-- Google Site Seguro -->
+        <span class="trust-logo-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 32 32" width="32" height="32">
+              <path d="M16 2 L16 16 Q16 24 22 27 Q28 24 28 16 L28 2 Z" fill="#34A853"/>
+              <polyline points="12,16 15,19 20,13" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="trust-text">
+            <h5 style="color:#4285F4">G<span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span></h5>
+            <p>Site Seguro</p>
+          </div>
+        </span>
+        <!-- Reclame Aqui -->
+        <a href="https://www.reclameaqui.com.br" target="_blank" rel="noopener" class="trust-logo-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 32 32" width="32" height="32">
+              <circle cx="16" cy="16" r="14" fill="#00B140"/>
+              <polyline points="10,16 14,20 22,12" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="trust-text">
+            <h5 style="color:#00B140">Reclame Aqui</h5>
+            <p>Loja verificada</p>
+          </div>
+        </a>
+        <!-- SSL -->
+        <span class="trust-logo-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 32 32" width="32" height="32">
+              <path d="M16 2 L16 18 Q16 26 22 29 Q28 26 28 18 L28 2 Z" fill="#34A853"/>
+              <rect x="12" y="18" width="8" height="7" rx="1.5" fill="#fff"/>
+              <path d="M13.5 18 v-3 a2.5 2.5 0 0 1 5 0 v3" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="trust-text">
+            <h5>Conexão Segura</h5>
+            <p>Certificado SSL</p>
+          </div>
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Mont Class. Todos os direitos reservados.</p>
+    <p style="font-size:10px; color:var(--text3); max-width:600px; text-align:center; line-height:1.6;">Trabalhamos com Mercado Pago, uma das plataformas de pagamento mais seguras do Brasil, garantindo segurança tanto para nossa equipe quanto para nossos clientes.</p>
+  </div>
+</footer>
+
+<!-- WhatsApp float -->
+<a href="https://wa.me/5521965966145" target="_blank" rel="noopener" class="wpp-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script src="produtos-data.js"></script>
+<script>
+  /* ── Products ── */
+  const WPP = '5521965966145';
+
+  // Build brand-grouped catalog from ALL_PRODUCTS (products-data.js)
+  const PRODUCTS = { rolex: [], patek: [], tag: [], omega: [] };
+  Object.values(ALL_PRODUCTS).forEach(p => {
+    if (PRODUCTS[p.brand]) PRODUCTS[p.brand].push(p);
+  });
+
+  function makeCard(p) {
+    const card = document.createElement('a');
+    card.className = 'pcard';
+    card.href = 'produto.html?p=' + p.handle;
+    card.innerHTML =
+      '<div class="pcard-img">' +
+        '<img src="' + p.images[0] + '" alt="' + p.title + '" loading="lazy">' +
+        (p.disc ? '<span class="pcard-badge">' + p.disc + '</span>' : '') +
+      '</div>' +
+      '<div class="pcard-body">' +
+        '<div class="pcard-name">' + p.title + '</div>' +
+        '<div class="pcard-pricing">' +
+          '<span class="pcard-price">' + p.price + '</span>' +
+          (p.orig ? '<span class="pcard-original">' + p.orig + '</span>' : '') +
+        '</div>' +
+        '<span class="pcard-btn">Ver produto</span>' +
+      '</div>';
+    return card;
+  }
+
+  let currentBrand = 'all';
+  let showingAll = false;
+
+  function renderProducts(brand, all) {
+    currentBrand = brand;
+    showingAll = !!all;
+    const grid = document.getElementById('pgrid');
+    grid.innerHTML = '';
+    const list = brand === 'all'
+      ? Object.values(ALL_PRODUCTS)
+      : PRODUCTS[brand] || [];
+    const visible = all ? list : list.slice(0, 6);
+    visible.forEach(p => grid.appendChild(makeCard(p)));
+    const wrap = document.getElementById('ver-todos-wrap');
+    if (wrap) wrap.style.display = visible.length < list.length ? 'block' : 'none';
+  }
+
+  function mostrarTodos() {
+    renderProducts(currentBrand, true);
+  }
+
+  function filterBrand(brand) {
+    document.querySelectorAll('.brand-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.brand === brand);
+    });
+    renderProducts(brand, false);
+  }
+
+  function goTo(brand, e) {
+    if (e) e.preventDefault();
+    filterBrand(brand);
+    document.getElementById('colecoes').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
+
+  /* ── Banner carousel ── */
+  let bannerIdx = 0;
+  const bannerTotal = 3;
+  const bannerTrack = document.getElementById('bannerTrack');
+  const bannerDotEls = document.querySelectorAll('.banner-dot');
+  let bannerTimer;
+  function bannerGoTo(idx) {
+    bannerIdx = (idx + bannerTotal) % bannerTotal;
+    bannerTrack.style.transform = 'translateX(-' + (bannerIdx * 100) + '%)';
+    bannerDotEls.forEach((d, i) => d.classList.toggle('active', i === bannerIdx));
+  }
+  function bannerMove(dir) {
+    bannerGoTo(bannerIdx + dir);
+    clearInterval(bannerTimer);
+    bannerTimer = setInterval(() => bannerMove(1), 4000);
+  }
+  bannerTimer = setInterval(() => bannerMove(1), 4000);
+
+  /* ── Banner swipe (touch) ── */
+  let touchStartX = 0;
+  bannerTrack.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  bannerTrack.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) bannerMove(diff > 0 ? 1 : -1);
+  }, { passive: true });
+
+  /* ── Bestsellers (mesmos do site real) ── */
+  const BESTSELLERS_HANDLES = [
+    'rolex-cosmograph-daytona-white',
+    'rolex-gmt-master-ii-black-blue',
+    'relogio-patek-philippe-aquanaut-preto',
+    'omega-speedmaster-silver-snoopy-award-50th-anniversary-bracelete-aco',
+    'tag-heuer-formula-1-quartz',
+    'rolex-datejust-black',
+  ];
+
+  function renderBestsellers() {
+    const grid = document.getElementById('pgrid-bestsellers');
+    BESTSELLERS_HANDLES.forEach(handle => {
+      const p = ALL_PRODUCTS[handle];
+      if (p) grid.appendChild(makeCard(p));
+    });
+  }
+
+  renderBestsellers();
+  renderProducts('all', false);
+
+  /* ── Carousel Instagram (arrastar) ── */
+  const ic = document.getElementById('instaCarousel');
+  let icDown = false, icStartX, icScrollLeft;
+  ic.addEventListener('mousedown', e => {
+    icDown = true; ic.classList.add('dragging');
+    icStartX = e.pageX - ic.offsetLeft;
+    icScrollLeft = ic.scrollLeft;
+  });
+  ic.addEventListener('mouseleave', () => { icDown = false; ic.classList.remove('dragging'); });
+  ic.addEventListener('mouseup',    () => { icDown = false; ic.classList.remove('dragging'); });
+  ic.addEventListener('mousemove',  e => {
+    if (!icDown) return;
+    e.preventDefault();
+    ic.scrollLeft = icScrollLeft - (e.pageX - ic.offsetLeft - icStartX) * 1.4;
+  });
+
+  /* ── Carousel de marcas (arrastar) ── */
+  const mc = document.getElementById('marcasCarousel');
+  if (mc) {
+    let mcDown = false, mcStartX, mcScrollLeft;
+    mc.addEventListener('mousedown', e => { mcDown = true; mc.classList.add('dragging'); mcStartX = e.pageX - mc.offsetLeft; mcScrollLeft = mc.scrollLeft; });
+    mc.addEventListener('mouseleave', () => { mcDown = false; mc.classList.remove('dragging'); });
+    mc.addEventListener('mouseup', () => { mcDown = false; mc.classList.remove('dragging'); });
+    mc.addEventListener('mousemove', e => { if (!mcDown) return; e.preventDefault(); mc.scrollLeft = mcScrollLeft - (e.pageX - mc.offsetLeft - mcStartX) * 1.4; });
+  }
+
+  /* ── Side menu ── */
+  function openMenu() {
+    document.getElementById('sideMenu').classList.add('open');
+    document.getElementById('menuOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    document.getElementById('sideMenu').classList.remove('open');
+    document.getElementById('menuOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeMenu(); closeSearch(); } });
+
+  /* ── Search ── */
+  function openSearch() {
+    document.getElementById('searchOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => document.getElementById('searchInput').focus(), 80);
+  }
+  function closeSearch() {
+    document.getElementById('searchOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+    document.getElementById('searchInput').value = '';
+    document.getElementById('searchGrid').innerHTML = '';
+    document.getElementById('searchEmpty').style.display = 'none';
+    document.getElementById('searchHint').style.display = 'block';
+  }
+  function handleSearch(q) {
+    const grid = document.getElementById('searchGrid');
+    const empty = document.getElementById('searchEmpty');
+    const hint  = document.getElementById('searchHint');
+    q = q.trim().toLowerCase();
+    grid.innerHTML = '';
+    if (!q) {
+      empty.style.display = 'none';
+      hint.style.display = 'block';
+      return;
+    }
+    hint.style.display = 'none';
+    const results = Object.values(ALL_PRODUCTS).filter(p =>
+      p.title.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q)
+    );
+    if (results.length === 0) {
+      empty.style.display = 'block';
+      return;
+    }
+    empty.style.display = 'none';
+    results.slice(0, 12).forEach(p => grid.appendChild(makeCard(p)));
+  }
+
+  /* ── Medidor de pulso ── */
+  const WRIST_DATA = {
+    14: { size: '34mm a 36mm' },
+    15: { size: '36mm a 38mm' },
+    16: { size: '38mm a 40mm' },
+    17: { size: '40mm a 42mm' },
+    18: { size: '42mm a 44mm' },
+    19: { size: '44mm a 46mm' },
+    20: { size: '46mm a 48mm' },
+  };
+
+  function selectWristSize(cm, btn) {
+    document.querySelectorAll('.size-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    var d = WRIST_DATA[cm];
+    document.getElementById('recCm').textContent   = cm + ' cm';
+    document.getElementById('recSize').textContent = d.size;
+    document.getElementById('wristRec').classList.add('show');
+  }
+
+  (function() {
+    var btns = document.querySelectorAll('.size-btn');
+    if (btns.length >= 4) selectWristSize(17, btns[3]);
+  })();
+</script>
+</body>
+</html>
