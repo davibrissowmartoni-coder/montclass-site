@@ -1485,11 +1485,22 @@
   bannerTimer = setInterval(() => bannerMove(1), 4000);
 
   /* ── Banner swipe (touch) ── */
-  let touchStartX = 0;
-  bannerTrack.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-  bannerTrack.addEventListener('touchend', e => {
-    const diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) bannerMove(diff > 0 ? 1 : -1);
+  const bannerEl = bannerTrack.parentElement;
+  let swipeStartX = 0, swipeStartY = 0, swipeMoved = false;
+  bannerEl.addEventListener('touchstart', e => {
+    swipeStartX = e.touches[0].clientX;
+    swipeStartY = e.touches[0].clientY;
+    swipeMoved = false;
+  }, { passive: true });
+  bannerEl.addEventListener('touchmove', e => {
+    const dx = Math.abs(e.touches[0].clientX - swipeStartX);
+    const dy = Math.abs(e.touches[0].clientY - swipeStartY);
+    if (dx > dy && dx > 8) { swipeMoved = true; e.preventDefault(); }
+  }, { passive: false });
+  bannerEl.addEventListener('touchend', e => {
+    if (!swipeMoved) return;
+    const diff = swipeStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 30) bannerMove(diff > 0 ? 1 : -1);
   }, { passive: true });
 
   /* ── Bestsellers (mesmos do site real) ── */
